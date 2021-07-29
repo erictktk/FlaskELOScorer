@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparator</title>
+    <link rel="stylesheet" href="../static/style.css" type="text/css">
+</head>
+<body>
+<div class="main">
+
+  <div class="title">
+    Comparator
+  </div>
+
+  <div id="instructions">
+    Choose Most Representative
+  </div>
+
+  <div id="comparison">
+    <div id="entries">
+      {% if entries_rows|length == 2 %}
+        <div id="entries-row-1">
+          {% for e in entries_rows[0] %}
+            <a href={{ e["href"] }}>
+              <div style={{ e["style"] }}>
+                {{text}}
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+        <div id ="entries-rows-2">
+          {% for e in entries_rows[1] %}
+            <a href={{ e["href"] }} >
+               <div style= {{ e["style"] }} >
+                 {{  text  }}
+               </div>
+            </a>
+        </div>
+      {% endif %}
+      {% if entries_rows|length == 1 %}
+        <div id="entries-row-1">
+          {% for e in entries_rows[0] %}
+            <a href={{ e["href"] }}>
+              <div style={{ e["style"] }}>
+                {{ e["text"] }}
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <div id="vibe">
+      {{ vibe }
+    </div>
+  </div>
+</body>
+</html>
