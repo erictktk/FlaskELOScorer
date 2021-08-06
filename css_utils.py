@@ -9,6 +9,12 @@ EXT_MAP = {".ttf": "truetype", ".otf": "opentype"}
 
 
 def create_css(directory):
+    """
+    Writes a css file from all the fonts in a directory
+
+    :param directory:
+    :return:
+    """
     entries = os.listdir(directory)
 
     file_path = os.path.join(directory, 'fontStyle.css')

@@ -25,6 +25,9 @@ def close_db():
 
 
 def get_stuff(cur_type, db):
+    """
+    Gets entries from db for match ups
+    """
     collection = db['entries']
     count = collection.countDocuments({})
 

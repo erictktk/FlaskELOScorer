@@ -1,4 +1,4 @@
-"""Elo Calculator"""
+"""Module for ELO Calculations lol"""
 
 
 def calculate_new_ratings(r1, r2, winner, k=32):

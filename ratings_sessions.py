@@ -1,3 +1,8 @@
+"""
+This module sets up ELO Scoring sessions for visitors
+"""
+
+
 import random
 
 
@@ -12,6 +17,20 @@ num_types = 4
 
 
 def get_types_direct_primary():
+    """
+    This function sets up "games" to rate vibes
+
+    will group for faster rating
+
+    ex:
+    first 6 will be direct
+    next 8 will be multi
+
+    tries not to make length of ratings sessions of len > 50
+
+    :return: [int]
+    """
+
     val = random.randint(0, 3)
 
     session_length = 60
@@ -24,7 +43,7 @@ def get_types_direct_primary():
     length = 100
     for i in range(0, length):
         cur_length = random.randint(group_length_ranges[0], group_length_ranges[1])*2
-        print(cur_length)
+        #print(cur_length)
         group_lengths.append(cur_length)
 
         if sum(group_lengths) >= 50:

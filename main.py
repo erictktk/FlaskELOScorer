@@ -1,8 +1,12 @@
+"""
+This module is where the main Flask decorator (routing?) functions go
+"""
+
 from flask import (
     Flask, g, redirect, render_template, request, session
 )
 
-import comparator_functions
+import db_functions
 import datetime
 from datetime import timezone
 
@@ -195,7 +199,7 @@ def receive_selection():
 
         selected_index = request.args.get('s', type=int)
 
-        comparator_functions.add_direct_comparison(db, v, c1, c2, selected_index)
+        db_functions.add_direct_comparison(db, v, c1, c2, selected_index)
 
     elif cur_type == COMPARE_TYPE.MULTI:
         c1 = request.args.get('c1', type=int)
@@ -211,14 +215,14 @@ def receive_selection():
 
         selected_index = request.args.get('s', type=int)
 
-        comparator_functions.add_multi_result(db, v, choices, selected_index)
+        db_functions.add_multi_result(db, v, choices, selected_index)
 
     elif cur_type == COMPARE_TYPE.RATE:
         v = request.args.get('v1', type=int)
 
         selected_index = request.args.get('s', type=int)
 
-        comparator_functions.add_vibe_rating(db, v, selected_index)
+        db_functions.add_vibe_rating(db, v, selected_index)
 
     elif cur_type == COMPARE_TYPE.TWO_VIBE:
         pass
@@ -230,7 +234,7 @@ def receive_selection():
 
         selected_index = request.args.get('s', type=int)
 
-        comparator_functions.add_two_vibe(db, c, v1, v2, selected_index)
+        db_functions.add_two_vibe(db, c, v1, v2, selected_index)
 
     return redirect('/vibes-session?iter={0}'.format(next_iter))
 
